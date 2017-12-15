@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ftb-ingress
+  #annotations:
+  #  ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /static/*
+        backend:
+          serviceName: ftbstatic-service
+          servicePort: 80
+      - path: /*
+        backend:
+          serviceName: ftbfront-service
+          servicePort: 80

@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lmg
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lmg
+    spec:
+      containers:
+        - name: lmg
+          image: us.gcr.io/k8s-belgrade-workshop/lmg:1.1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_SERVICE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: lmg-config # configMap name
+                  key: mysqlHost
+            - name: MYSQL_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: lmg-config
+                  key: mysqlPort
+            - name: MYSQL_CLIENT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: lmg-config
+                  key: mysqlUser
+            - name: MYSQL_CLIENT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: lmg-secrets
+                  key: mysqlRootPassword
+            - name: MYSQL_CLIENT_DBNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: lmg-config
+                  key: mysqlDbname

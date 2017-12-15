@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ftb-front
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ftb-front
+    spec:
+      containers:
+        - name: ftbfront
+          image: us.gcr.io/k8s-belgrade-workshop/ftbfront:1.2
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CUSTOM_BACKEND_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: ftb-config # configMap name
+                  key: backendHost
+

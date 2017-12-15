@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: demo1
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: demo1
+    spec:
+      containers:
+        - name: demo1-server
+          image: us.gcr.io/k8s-belgrade-workshop/demo1:1.4
+          ports:
+            - containerPort: 8080
+

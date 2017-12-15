@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hellok8s
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: hellok8s
+          image: us.gcr.io/k8s-belgrade-workshop/hellok8s:1.0
+          ports:
+            - containerPort: 8080

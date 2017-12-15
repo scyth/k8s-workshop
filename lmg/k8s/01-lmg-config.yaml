@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lmg-config
+data:
+  mysqlHost: mysql-service.default
+  mysqlPort: "3306"
+  mysqlDbname: lmg
+  mysqlUser: root
+

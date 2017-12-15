@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ftb-static
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ftb-static
+    spec:
+      containers:
+        - name: ftbstatic
+          image: us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.0
+          ports:
+            - containerPort: 8080
