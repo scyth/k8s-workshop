@@ -24,6 +24,6 @@ func styleHandler(w http.ResponseWriter, req *http.Request) {
 
 const tplHtml = `
 h1 {
-    color: green;
+    color: red;
 }
 `

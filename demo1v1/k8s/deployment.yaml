@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo1-server
-          image: us.gcr.io/k8s-belgrade-workshop/demo1:1.4
+          image: us.gcr.io/k8s-belgrade-workshop/demo1:1.7
           ports:
             - containerPort: 8080
 

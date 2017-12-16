@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: ftbstatic
-          image: us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.0
+          image: us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.1
           ports:
             - containerPort: 8080

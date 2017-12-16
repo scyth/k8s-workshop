@@ -5,10 +5,10 @@ linux:
 	GOOS=linux GOARCH=amd64 go build -o bin/demo1_linux .
 
 docker: linux
-	docker build -t us.gcr.io/k8s-belgrade-workshop/demo1:1.4 .
+	docker build -t us.gcr.io/k8s-belgrade-workshop/demo1:1.7 .
 
 push:
-	gcloud docker -- push us.gcr.io/k8s-belgrade-workshop/demo1:1.4
+	gcloud docker -- push us.gcr.io/k8s-belgrade-workshop/demo1:1.7
 
 darwin:
 	go build -o bin/demo1_darwin .

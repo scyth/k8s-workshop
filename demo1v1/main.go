@@ -29,7 +29,7 @@ type simpleResponse struct {
 
 func main() {
 	log.SetOutput(os.Stdout)
-	srv := &http.Server{Addr: ":8080"}
+	srv := &http.Server{Addr: ":8080", ReadTimeout: 3 * time.Second}
 	http.HandleFunc("/", rootHandler)
 	go func() {
 		if err := srv.ListenAndServe(); err != nil {
@@ -42,7 +42,9 @@ func main() {
 
 	<-sigCh
 	log.Println("Received TERM signal...")
-	if err := srv.Shutdown(context.Background()); err != nil {
+	time.Sleep(5 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 9*time.Second)
+	if err := srv.Shutdown(ctx); err != nil {
 		panic(err) // failure/timeout shutting down the server gracefully
 	}
 	log.Println("Exited.")

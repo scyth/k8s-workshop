@@ -5,10 +5,10 @@ linux:
 	GOOS=linux GOARCH=amd64 go build -o bin/ftbstatic_linux .
 
 docker: linux
-	docker build -t us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.0 .
+	docker build -t us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.1 .
 
 push:
-	gcloud docker -- push us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.0
+	gcloud docker -- push us.gcr.io/k8s-belgrade-workshop/ftbstatic:1.1
 
 darwin:
 	go build -o bin/ftbstatic_darwin .
